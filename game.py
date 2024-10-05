@@ -1,6 +1,5 @@
 # game.py
 
-import pygame
 import random
 from settings import *
 from score import save_high_score
