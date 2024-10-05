@@ -2,6 +2,7 @@
 
 from settings import *
 from game import game
+from music import play_main_theme
 
 def main_menu():
     menu = True
