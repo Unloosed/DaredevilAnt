@@ -57,10 +57,15 @@ def draw_obstacles(obstacle_list):
 
 def update_obstacle_positions(obstacle_list, score, player_pos):
     for idx, obstacle_pos in enumerate(obstacle_list):
-        if 0 <= obstacle_pos[1] < SCREEN_HEIGHT:
+        if obstacle_pos[1] >= 0 and obstacle_pos[1] < SCREEN_HEIGHT:
             obstacle_pos[1] += SPEED
-            if obstacle_pos[1] > player_pos[1]:
-                score += 1  # Increment score as raindrops get closer
+
+            # Check if the player is near the raindrop horizontally
+            if abs(obstacle_pos[0] - player_pos[0]) < PLAYER_SIZE:
+                # Increment score based on proximity
+                distance = abs(obstacle_pos[1] - player_pos[1])
+                score_increment = max(1, (SCREEN_HEIGHT - distance) // 50)
+                score += score_increment
         else:
             obstacle_list.pop(idx)
     return score
