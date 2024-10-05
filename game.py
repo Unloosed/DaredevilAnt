@@ -36,6 +36,7 @@ def game():
         if collision_check(obstacle_list, player_pos):
             save_high_score(score)
             stop_music()
+            play_death_sound()
             game_over_screen(score)
 
         screen.blit(ANT_IMAGE, (player_pos[0], player_pos[1]))  # Draw player

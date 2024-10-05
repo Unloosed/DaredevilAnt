@@ -5,6 +5,12 @@ SONG_DIRECTORY = "music/"
 SONGS = ["Daredevil Ant.mp3", "Circles.mp3", "Dreaming.mp3", "Hiking up a Mountain.mp3",
          "Hyperactive.mp3", "Running on Empty.mp3", "Waking Up.mp3"]
 
+if not pygame.mixer.get_init():
+    pygame.mixer.init()
+    
+DEATH_SOUND_FILE_NAME = "death sound effect.mp3"
+DEATH_SOUND = pygame.mixer.Sound(SONG_DIRECTORY + DEATH_SOUND_FILE_NAME)
+
 def play_main_theme():
     """Play Daredevil Ant.mp3"""
     pygame.mixer.music.load(SONG_DIRECTORY + SONGS[0])
@@ -21,3 +27,7 @@ def play_game_music():
 
 def stop_music():
     pygame.mixer.music.stop()
+
+def play_death_sound():
+    DEATH_SOUND.set_volume(0.5)
+    DEATH_SOUND.play()
