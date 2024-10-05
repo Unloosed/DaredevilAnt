@@ -33,6 +33,7 @@ RAINDROP_IMAGE = pygame.image.load("assets/raindrop.png")
 FLOOR_IMAGE = pygame.image.load("assets/floor.png")
 
 # Scale images as needed
+BACKGROUND_IMAGE = pygame.transform.scale(BACKGROUND_IMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
 ANT_IMAGE = pygame.transform.scale(ANT_IMAGE, (PLAYER_SIZE, PLAYER_SIZE))
 RAINDROP_IMAGE = pygame.transform.scale(RAINDROP_IMAGE, (OBSTACLE_SIZE, OBSTACLE_SIZE))
 FLOOR_IMAGE = pygame.transform.scale(FLOOR_IMAGE, (SCREEN_WIDTH, 100))  # Adjust height as needed
