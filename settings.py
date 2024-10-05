@@ -27,14 +27,16 @@ SPEED = 10
 CLOCK = pygame.time.Clock()
 
 # Load images
-BACKGROUND_IMAGE = pygame.image.load("assets/background.png")
+GAME_BACKGROUND_IMAGE = pygame.image.load("assets/game_background.png")
 ANT_FACING_LEFT_IMAGE = pygame.image.load("assets/ant.png")
 RAINDROP_IMAGE = pygame.image.load("assets/raindrop.png")
 FLOOR_IMAGE = pygame.image.load("assets/floor.png")
+MAIN_MENU_BACKGROUND_IMAGE = pygame.image.load("assets/main_menu_background.png")
 
 # Scale images as needed
-BACKGROUND_IMAGE = pygame.transform.scale(BACKGROUND_IMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
+GAME_BACKGROUND_IMAGE = pygame.transform.scale(GAME_BACKGROUND_IMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
 ANT_FACING_LEFT_IMAGE = pygame.transform.scale(ANT_FACING_LEFT_IMAGE, (PLAYER_SIZE, PLAYER_SIZE))
 ANT_FACING_RIGHT_IMAGE = pygame.transform.flip(ANT_FACING_LEFT_IMAGE, True, False)
 RAINDROP_IMAGE = pygame.transform.scale(RAINDROP_IMAGE, (OBSTACLE_SIZE, OBSTACLE_SIZE))
 FLOOR_IMAGE = pygame.transform.scale(FLOOR_IMAGE, (SCREEN_WIDTH, 100))  # Adjust height as needed
+MAIN_MENU_BACKGROUND_IMAGE = pygame.transform.scale(MAIN_MENU_BACKGROUND_IMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
