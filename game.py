@@ -1,5 +1,6 @@
 # game.py
 
+import pygame
 import random
 from settings import *
 from score import save_high_score
@@ -22,7 +23,11 @@ def game():
         if keys[pygame.K_RIGHT] and player_pos[0] < SCREEN_WIDTH - PLAYER_SIZE:
             player_pos[0] += 5
 
-        screen.fill(BLACK)
+        # Draw background and floor
+        screen.blit(BACKGROUND_IMAGE, (0, 0))
+        screen.blit(FLOOR_IMAGE, (0, SCREEN_HEIGHT - 100))
+
+        # Update and draw game elements
         drop_obstacles(obstacle_list)
         score = update_obstacle_positions(obstacle_list, score, player_pos)
         draw_obstacles(obstacle_list)
@@ -31,7 +36,7 @@ def game():
             save_high_score(score)
             game_over_screen(score)
 
-        pygame.draw.rect(screen, WHITE, (player_pos[0], player_pos[1], PLAYER_SIZE, PLAYER_SIZE))
+        screen.blit(ANT_IMAGE, (player_pos[0], player_pos[1]))  # Draw player
         display_score(score)
 
         pygame.display.update()
@@ -49,7 +54,7 @@ def drop_obstacles(obstacle_list):
 
 def draw_obstacles(obstacle_list):
     for obstacle_pos in obstacle_list:
-        pygame.draw.rect(screen, RAIN_COLOR, (obstacle_pos[0], obstacle_pos[1], OBSTACLE_SIZE, OBSTACLE_SIZE))
+        screen.blit(RAINDROP_IMAGE, (obstacle_pos[0], obstacle_pos[1]))
 
 def update_obstacle_positions(obstacle_list, score, player_pos):
     for idx, obstacle_pos in enumerate(obstacle_list):
