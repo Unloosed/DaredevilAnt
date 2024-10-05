@@ -40,7 +40,7 @@ def game():
             player_pos[0] += 5
 
         # Draw background and floor
-        screen.blit(BACKGROUND_IMAGE, (0, 0))
+        screen.blit(GAME_BACKGROUND_IMAGE, (0, 0))
         screen.blit(FLOOR_IMAGE, (0, SCREEN_HEIGHT - 100))
 
         # Update and draw game elements
