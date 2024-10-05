@@ -8,6 +8,7 @@ def main_menu():
     menu = True
     while menu:
         screen.fill(BLACK)
+        # screen.blit(MAIN_MENU_BACKGROUND_IMAGE, (0, 0))
         title = FONT.render("Daredevil Ant", True, WHITE)
         play_button = SMALL_FONT.render("Start Game", True, WHITE)
         highscore_button = SMALL_FONT.render("High Scores", True, WHITE)
