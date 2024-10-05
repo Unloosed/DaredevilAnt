@@ -11,6 +11,13 @@ def game():
     obstacle_list = [create_obstacle()]
     score = 0
 
+    # Set initial direction flags
+    facing_left = True
+    facing_right = False
+
+    # Set initial player direction
+    ant_image = ANT_FACING_LEFT_IMAGE
+
     game_over = False
     while not game_over:
         for event in pygame.event.get():
@@ -20,8 +27,16 @@ def game():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player_pos[0] > 0:
+            if facing_right:
+                ant_image = ANT_FACING_LEFT_IMAGE
+                facing_right = False
+                facing_left = True
             player_pos[0] -= 5
         if keys[pygame.K_RIGHT] and player_pos[0] < SCREEN_WIDTH - PLAYER_SIZE:
+            if facing_left:
+                ant_image = ANT_FACING_RIGHT_IMAGE
+                facing_right = True
+                facing_left = False
             player_pos[0] += 5
 
         # Draw background and floor
@@ -39,7 +54,7 @@ def game():
             play_death_sound()
             game_over_screen(score)
 
-        screen.blit(ANT_IMAGE, (player_pos[0], player_pos[1]))  # Draw player
+        screen.blit(ant_image, (player_pos[0], player_pos[1]))  # Draw player
         display_score(score)
 
         pygame.display.update()
@@ -61,7 +76,7 @@ def draw_obstacles(obstacle_list):
 
 def update_obstacle_positions(obstacle_list, score, player_pos):
     for idx, obstacle_pos in enumerate(obstacle_list):
-        if obstacle_pos[1] >= 0 and obstacle_pos[1] < SCREEN_HEIGHT:
+        if 0 <= obstacle_pos[1] < SCREEN_HEIGHT:
             obstacle_pos[1] += SPEED
 
             # Check if the player is near the raindrop horizontally
