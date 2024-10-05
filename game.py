@@ -3,8 +3,10 @@
 import random
 from settings import *
 from score import save_high_score
+from music import *
 
 def game():
+    play_game_music()
     player_pos = [SCREEN_WIDTH // 2, SCREEN_HEIGHT - 2 * PLAYER_SIZE]
     obstacle_list = [create_obstacle()]
     score = 0
@@ -33,6 +35,7 @@ def game():
 
         if collision_check(obstacle_list, player_pos):
             save_high_score(score)
+            stop_music()
             game_over_screen(score)
 
         screen.blit(ANT_IMAGE, (player_pos[0], player_pos[1]))  # Draw player
@@ -133,4 +136,5 @@ def game_over_screen(score):
                     pygame.quit()
                     quit()
                 if menu_rect.collidepoint(mouse_pos):
+                    play_main_theme()
                     main_menu()
