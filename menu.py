@@ -74,4 +74,5 @@ def show_high_scores():
                 quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if menu_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
                     main_menu()
