@@ -1,6 +1,7 @@
 # game.py
 
 import random
+import time
 from settings import *
 from score import save_high_score
 from music import *
@@ -19,6 +20,11 @@ def game():
     ant_image = ANT_FACING_LEFT_IMAGE
 
     game_over = False
+
+    # Initialize the timer (60 seconds)
+    start_time = time.time()
+    timer = 60
+
     while not game_over:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -39,6 +45,18 @@ def game():
                 facing_left = False
             player_pos[0] += 5
 
+        # Update the timer
+        elapsed_time = int(time.time() - start_time)
+        remaining_time = max(0, timer - elapsed_time)
+
+        # Check if timer has reached zero
+        if remaining_time == 0:
+            game_over = True
+            save_high_score(score)
+            stop_music()
+            play_sound_effect(DEATH_SOUND)
+            game_over_screen(score)
+
         # Draw background and floor
         screen.blit(GAME_BACKGROUND_IMAGE, (0, 0))
         screen.blit(FLOOR_IMAGE, (0, SCREEN_HEIGHT - 100))
@@ -49,16 +67,26 @@ def game():
         draw_obstacles(obstacle_list)
 
         if collision_check(obstacle_list, player_pos):
+            game_over = True
             save_high_score(score)
             stop_music()
             play_sound_effect(DEATH_SOUND)
             game_over_screen(score)
 
-        screen.blit(ant_image, (player_pos[0], player_pos[1]))  # Draw player
+        # Draw player
+        screen.blit(ant_image, (player_pos[0], player_pos[1]))
+
+        # Display score and timer
         display_score(score)
+        display_timer(remaining_time)
 
         pygame.display.update()
         CLOCK.tick(30)
+
+def display_timer(remaining_time):
+    timer_text = FONT.render(f"Time: {remaining_time}", True, RED)
+    text_rect = timer_text.get_rect(topleft=(SCREEN_WIDTH - 200, 10))
+    screen.blit(timer_text, text_rect.topleft)
 
 def create_obstacle():
     x_pos = random.randint(0, SCREEN_WIDTH - OBSTACLE_SIZE)
