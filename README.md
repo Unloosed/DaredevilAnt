@@ -29,7 +29,7 @@ It is currently raining, and you want to see how close you can get to the raindr
 ## How to Play
 - Use the **LEFT** and **RIGHT** arrow keys to move your ant and dodge raindrops.
 - Gain points by standing directly underneath raindrops. The closer they are, the faster you will gain points.
-- There is a timer, so to maximize your score you will have to take risks. Make sure not to get hit, though!
+- There is a 60-second timer, so to maximize your score you will have to take risks. Make sure not to get hit, though!
 
 ## Features
 - **Main Menu**: Start the game or view high scores.
