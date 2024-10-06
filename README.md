@@ -16,7 +16,7 @@ It is currently raining, and you want to see how close you can get to the raindr
 
 ### Download (Windows only)
 
-1. Navigate to the [releases page](https://github.com/Unloosed/DaredevilAnt/releases/tag/v1.0.0)
+1. Navigate to the [releases page](https://github.com/Unloosed/DaredevilAnt/releases/tag/v1.0.1)
 2. Download the .zip
 3. Extract, and run the .exe!
 

@@ -1,5 +1,6 @@
 # menu.py
 
+import sys
 from settings import *
 from game import game
 from music import *
@@ -40,7 +41,7 @@ def main_menu():
             if event.type == pygame.QUIT:
                 menu = False
                 pygame.quit()
-                quit()
+                sys.exit(0)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
@@ -52,7 +53,7 @@ def main_menu():
                 if quit_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
                     pygame.quit()
-                    quit()
+                    sys.exit(0)
 
 def show_high_scores():
     from score import load_high_scores
@@ -81,7 +82,7 @@ def show_high_scores():
             if event.type == pygame.QUIT:
                 showing = False
                 pygame.quit()
-                quit()
+                sys.exit(0)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if menu_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)

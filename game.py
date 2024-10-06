@@ -2,6 +2,7 @@
 
 import random
 import time
+import sys
 from settings import *
 from score import save_high_score
 from music import *
@@ -30,7 +31,7 @@ def game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                sys.exit(0)
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player_pos[0] > 0:
@@ -173,7 +174,7 @@ def game_over_screen(score):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                sys.exit(0)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if retry_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
@@ -181,7 +182,7 @@ def game_over_screen(score):
                 if quit_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
                     pygame.quit()
-                    quit()
+                    sys.exit(0)
                 if menu_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
                     play_main_theme()
