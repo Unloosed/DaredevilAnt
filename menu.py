@@ -2,7 +2,8 @@
 
 from settings import *
 from game import game
-from music import play_main_theme
+from music import *
+
 
 def main_menu():
     menu = True
@@ -36,8 +37,11 @@ def main_menu():
                 quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
+                    play_main_theme()
                     game()
                 if highscore_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
                     show_high_scores()
 
 def show_high_scores():

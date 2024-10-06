@@ -51,7 +51,7 @@ def game():
         if collision_check(obstacle_list, player_pos):
             save_high_score(score)
             stop_music()
-            play_death_sound()
+            play_sound_effect(DEATH_SOUND)
             game_over_screen(score)
 
         screen.blit(ant_image, (player_pos[0], player_pos[1]))  # Draw player
@@ -147,10 +147,13 @@ def game_over_screen(score):
                 quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if retry_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
                     game()
                 if quit_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
                     pygame.quit()
                     quit()
                 if menu_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
                     play_main_theme()
                     main_menu()
