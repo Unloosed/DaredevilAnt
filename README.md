@@ -13,6 +13,15 @@ It is currently raining, and you want to see how close you can get to the raindr
 - [License](#license)
 
 ## Installation
+
+### Download (Windows only)
+
+1. Navigate to the [releases page](https://github.com/Unloosed/DaredevilAnt/releases/tag/v1.0.0)
+2. Download the .zip
+3. Extract, and run the .exe!
+
+### Manual
+
 1. Clone the repository:
     ```bash
     git clone https://github.com/Unloosed/DaredevilAnt
@@ -21,7 +30,7 @@ It is currently raining, and you want to see how close you can get to the raindr
     ```bash
     cd DaredevilAnt
     ```
-3. Install the required dependencies:
+3. Install the required dependency (just `pygame-ce`):
     ```bash
     pip install -r requirements.txt
     ```
