@@ -13,9 +13,11 @@ def main_menu():
         title = FONT.render("Daredevil Ant", True, WHITE)
         play_button = SMALL_FONT.render("Start Game", True, WHITE)
         highscore_button = SMALL_FONT.render("High Scores", True, WHITE)
+        quit_button = SMALL_FONT.render("Quit", True, WHITE)
 
         play_rect = play_button.get_rect(topleft=(SCREEN_WIDTH // 2 - play_button.get_width() // 2, SCREEN_HEIGHT // 2))
         highscore_rect = highscore_button.get_rect(topleft=(SCREEN_WIDTH // 2 - highscore_button.get_width() // 2, SCREEN_HEIGHT // 2 + 50))
+        quit_rect = quit_button.get_rect(topleft=(SCREEN_WIDTH // 2 - quit_button.get_width() // 2, SCREEN_HEIGHT // 2 + 100))
 
         # Check for hover effect
         mouse_pos = pygame.mouse.get_pos()
@@ -23,10 +25,13 @@ def main_menu():
             play_button = SMALL_FONT.render("Start Game", True, HOVER_COLOR)
         if highscore_rect.collidepoint(mouse_pos):
             highscore_button = SMALL_FONT.render("High Scores", True, HOVER_COLOR)
+        if quit_rect.collidepoint(mouse_pos):
+            quit_button = SMALL_FONT.render("Quit", True, HOVER_COLOR)
 
         screen.blit(title, (SCREEN_WIDTH // 2 - title.get_width() // 2, SCREEN_HEIGHT // 3))
         screen.blit(play_button, play_rect.topleft)
         screen.blit(highscore_button, highscore_rect.topleft)
+        screen.blit(quit_button, quit_rect.topleft)
 
         pygame.display.update()
 
@@ -43,6 +48,10 @@ def main_menu():
                 if highscore_rect.collidepoint(mouse_pos):
                     play_sound_effect(CLICK_BUTTON_SOUND)
                     show_high_scores()
+                if quit_rect.collidepoint(mouse_pos):
+                    play_sound_effect(CLICK_BUTTON_SOUND)
+                    pygame.quit()
+                    quit()
 
 def show_high_scores():
     from score import load_high_scores
