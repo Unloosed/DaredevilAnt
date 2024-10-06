@@ -5,6 +5,7 @@ import time
 from settings import *
 from score import save_high_score
 from music import *
+from sfx import *
 
 def game():
     play_game_music()

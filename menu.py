@@ -3,6 +3,7 @@
 from settings import *
 from game import game
 from music import *
+from sfx import *
 
 
 def main_menu():

@@ -23,6 +23,9 @@ PLAYER_SIZE = 50
 OBSTACLE_SIZE = 50
 SPEED = 10
 
+# Sound
+VOLUME = 0.5
+
 # Clock
 CLOCK = pygame.time.Clock()
 
