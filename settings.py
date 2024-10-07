@@ -38,7 +38,7 @@ MAIN_MENU_BACKGROUND_IMAGE = pygame.image.load("assets/main_menu_background.png"
 
 # Scale images as needed
 GAME_BACKGROUND_IMAGE = pygame.transform.scale(GAME_BACKGROUND_IMAGE, (SCREEN_WIDTH, SCREEN_HEIGHT))
-ANT_FACING_LEFT_IMAGE = pygame.transform.scale(ANT_FACING_LEFT_IMAGE, (PLAYER_SIZE, PLAYER_SIZE))
+ANT_FACING_LEFT_IMAGE = pygame.transform.scale(ANT_FACING_LEFT_IMAGE, (PLAYER_SIZE, PLAYER_SIZE-20))
 ANT_FACING_RIGHT_IMAGE = pygame.transform.flip(ANT_FACING_LEFT_IMAGE, True, False)
 RAINDROP_IMAGE = pygame.transform.scale(RAINDROP_IMAGE, (OBSTACLE_SIZE, OBSTACLE_SIZE))
 FLOOR_IMAGE = pygame.transform.scale(FLOOR_IMAGE, (SCREEN_WIDTH, 100))  # Adjust height as needed
