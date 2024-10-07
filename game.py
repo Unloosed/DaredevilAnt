@@ -128,9 +128,17 @@ def collision_check(obstacle_list, player_pos):
 def detect_collision(player_pos, obstacle_pos):
     p_x, p_y = player_pos
     o_x, o_y = obstacle_pos
+    buffer_top = -5      # Leniency for the top of the player
+    buffer_bottom = -10    # Leniency for the bottom
+    buffer_left = -5     # Leniency for the left
+    buffer_right = -5    # Leniency for the right
 
-    if (p_x <= o_x < (p_x + PLAYER_SIZE)) or (o_x <= p_x < (o_x + OBSTACLE_SIZE)):
-        if (p_y <= o_y < (p_y + PLAYER_SIZE)) or (o_y <= p_y < (o_y + OBSTACLE_SIZE)):
+    # Ignore obstacles that have passed the player
+    if o_y > p_y + buffer_bottom:
+        return False
+
+    if (p_x + buffer_left <= o_x < (p_x + PLAYER_SIZE + buffer_right)) or (o_x + buffer_left <= p_x < (o_x + OBSTACLE_SIZE + buffer_right)):
+        if (p_y + buffer_top <= o_y < (p_y + PLAYER_SIZE + buffer_bottom)) or (o_y + buffer_top <= p_y < (o_y + OBSTACLE_SIZE + buffer_bottom)):
             return True
     return False
 
